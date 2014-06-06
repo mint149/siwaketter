@@ -39,7 +39,9 @@
 	
 	NSError *error = nil;
 	NSMutableArray *files = (NSMutableArray*)[fileManager contentsOfDirectoryAtPath:backupDirectory error:&error];
-		
+	
+	[self remove];
+	
 	for (NSString *file in files) {
 		NSString *src = [backupDirectory stringByAppendingPathComponent:file];
 		NSString *dst = [model.documentDirectory stringByAppendingPathComponent:file];
@@ -58,5 +60,21 @@
 	}
 }
 
+// [TODO] メソッド名変更
+-(void)remove{
+	NSFileManager *fileManager = [NSFileManager defaultManager];
+	NSError *error = nil;
+	NSString *srcDir = [model.documentDirectory stringByAppendingPathComponent:@"sample-dir2"];
+	NSMutableArray *files = (NSMutableArray*)[fileManager contentsOfDirectoryAtPath:srcDir error:&error];
 
+	for (NSString *file in files) {
+		NSString *src = [srcDir stringByAppendingPathComponent:file];
+		BOOL result = [fileManager removeItemAtPath:src error:&error];
+		if (result) {
+			NSLog(@"削除：%@", file);
+		} else {
+			NSLog(@"削除失敗：%@", error.description);
+		}
+	}
+}
 @end
