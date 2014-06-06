@@ -45,6 +45,7 @@
 	//	NSString *filePath = [NSString stringWithFormat:@"%@%@%@",documentDirectory, @"/", files[1]];
 	//	NSLog(@"%@", filePath);
 	
+	
 
 	//これがないとUISwipeGestureRecognizerを追加しても反応しなくなる
 	self.imageView.userInteractionEnabled = YES;
