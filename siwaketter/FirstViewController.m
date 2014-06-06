@@ -10,6 +10,10 @@
 
 @interface FirstViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+- (IBAction)leftSwipe:(id)sender;
+- (IBAction)rightSwipe:(id)sender;
+- (IBAction)downSwipe:(id)sender;
+- (IBAction)upSwipe:(id)sender;
 
 @end
 
@@ -38,11 +42,13 @@
 	//	NSLog(@"%@", filePath);
 	
 	// 画像の作成2．画像のキャッシュなし
-	NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"../Documents/20140601_46" ofType:@"png"];
+	NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"../Documents/1" ofType:@"png"];
 	UIImage *tempImage = [UIImage imageWithContentsOfFile:imagePath];
 	
 	
 	self.imageView.image = tempImage;
+	//これがないとUISwipeGestureRecognizerを追加しても反応しなくなる
+	self.imageView.userInteractionEnabled = YES;
 
 }
 
@@ -52,4 +58,20 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+- (IBAction)leftSwipe:(id)sender {
+	NSLog(@"左スワイプ");
+}
+
+- (IBAction)rightSwipe:(id)sender {
+	NSLog(@"右スワイプ");
+}
+
+- (IBAction)downSwipe:(id)sender {
+	NSLog(@"下スワイプ");
+}
+
+- (IBAction)upSwipe:(id)sender {
+	NSLog(@"上スワイプ");
+}
 @end

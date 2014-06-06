@@ -25,10 +25,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="kpY-E7-dTD" appends="YES" id="ORT-Ld-OUw"/>
-                                    <outletCollection property="gestureRecognizers" destination="SQu-iF-SNa" appends="YES" id="1Ax-eU-NrC"/>
-                                    <outletCollection property="gestureRecognizers" destination="Mb4-PC-l3d" appends="YES" id="mmC-QO-tfE"/>
-                                    <outletCollection property="gestureRecognizers" destination="DYs-eT-JDQ" appends="YES" id="hy3-Gb-tv8"/>
+                                    <outletCollection property="gestureRecognizers" destination="tDR-6M-0AI" appends="YES" id="uVs-pt-luy"/>
+                                    <outletCollection property="gestureRecognizers" destination="Laz-SO-g1e" appends="YES" id="aFz-NC-Sw3"/>
+                                    <outletCollection property="gestureRecognizers" destination="fiJ-T3-lQi" appends="YES" id="fEL-hg-9iB"/>
+                                    <outletCollection property="gestureRecognizers" destination="caV-Cg-puO" appends="YES" id="DFg-90-i7j"/>
                                 </connections>
                             </imageView>
                         </subviews>
@@ -45,10 +45,26 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="left" id="kpY-E7-dTD" userLabel="ImageViewLeft"/>
-                <swipeGestureRecognizer direction="right" id="SQu-iF-SNa" userLabel="ImageViewRight"/>
-                <swipeGestureRecognizer direction="up" id="Mb4-PC-l3d" userLabel="ImageViewUp"/>
-                <swipeGestureRecognizer direction="down" id="DYs-eT-JDQ" userLabel="ImageViewDown"/>
+                <swipeGestureRecognizer direction="left" id="tDR-6M-0AI" userLabel="ImageViewLeftSwipe">
+                    <connections>
+                        <action selector="leftSwipe:" destination="9pv-A4-QxB" id="T0P-Va-6kK"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="Laz-SO-g1e" userLabel="ImageViewRightSwipe">
+                    <connections>
+                        <action selector="rightSwipe:" destination="9pv-A4-QxB" id="TNz-dg-Vr4"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="up" id="caV-Cg-puO" userLabel="ImageViewUpSwipe">
+                    <connections>
+                        <action selector="upSwipe:" destination="9pv-A4-QxB" id="8cL-Bo-THz"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="down" id="fiJ-T3-lQi" userLabel="ImageViewDownSwipe">
+                    <connections>
+                        <action selector="downSwipe:" destination="9pv-A4-QxB" id="ALK-lh-sjB"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3035" y="108"/>
         </scene>
