@@ -27,26 +27,25 @@
 	//Documents内のファイルリストを表示
 	// ドキュメントディレクトリ
 	NSArray *documentDirectries = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-	NSString *documentDirectory = [documentDirectries lastObject];
+	documentDirectory = [documentDirectries lastObject];
 	NSLog(@"%@",documentDirectory);
 	
 	// ドキュメントディレクトリにあるファイルリスト
 	NSError *error = nil;
 	NSFileManager *fileManager = [NSFileManager defaultManager];
-	NSArray *files = [fileManager contentsOfDirectoryAtPath:documentDirectory error:&error];
+	files = [fileManager contentsOfDirectoryAtPath:documentDirectory error:&error];
 	for (NSString *file in files) {
 		NSLog(@"%@", file);
 	}
 	
+	//DS_Storeを飛ばすために1とする
+	fileNum = 1;
+
+	[self imageReload];
 	//	NSString *filePath = [NSString stringWithFormat:@"%@%@%@",documentDirectory, @"/", files[1]];
 	//	NSLog(@"%@", filePath);
 	
-	// 画像の作成2．画像のキャッシュなし
-	NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"../Documents/1" ofType:@"png"];
-	UIImage *tempImage = [UIImage imageWithContentsOfFile:imagePath];
-	
-	
-	self.imageView.image = tempImage;
+
 	//これがないとUISwipeGestureRecognizerを追加しても反応しなくなる
 	self.imageView.userInteractionEnabled = YES;
 
@@ -60,10 +59,14 @@
 
 
 - (IBAction)leftSwipe:(id)sender {
+	fileNum-=1;
+	[self imageReload];
 	NSLog(@"左スワイプ");
 }
 
 - (IBAction)rightSwipe:(id)sender {
+	fileNum+=1;
+	[self imageReload];
 	NSLog(@"右スワイプ");
 }
 
@@ -74,4 +77,13 @@
 - (IBAction)upSwipe:(id)sender {
 	NSLog(@"上スワイプ");
 }
+
+- (void)imageReload{
+	//キャッシュなしで画像を作成
+	NSString *imagePath = [documentDirectory stringByAppendingPathComponent:files[fileNum]];
+	UIImage *tempImage = [UIImage imageWithContentsOfFile:imagePath];
+	
+	self.imageView.image = tempImage;
+}
+
 @end

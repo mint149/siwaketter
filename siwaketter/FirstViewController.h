@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FirstViewController : UIViewController
+@interface FirstViewController : UIViewController{
+	NSString *documentDirectory;
+	NSArray *files;
+	int fileNum;
+	
+}
 
 @end
