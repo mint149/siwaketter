@@ -10,7 +10,7 @@
 
 @interface FirstViewController : UIViewController{
 	NSString *documentDirectory;
-	NSArray *files;
+	NSMutableArray *files;
 	int fileNum;
 	
 }
