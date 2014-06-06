@@ -20,15 +20,11 @@
 		// ドキュメントディレクトリ
 		NSArray *documentDirectries = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 		documentDirectory = [documentDirectries lastObject];
-		NSLog(@"%@",documentDirectory);
 		
 		// ドキュメントディレクトリにあるファイルリスト
 		NSError *error = nil;
 		NSFileManager *fileManager = [NSFileManager defaultManager];
 		files = (NSMutableArray*)[fileManager contentsOfDirectoryAtPath:documentDirectory error:&error];
-		for (NSString *file in files) {
-			NSLog(@"%@", file);
-		}
 		
 		//DS_Storeを飛ばすために1とする
 		fileNum = 1;

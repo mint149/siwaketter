@@ -77,7 +77,6 @@
 	if (![fileManager fileExistsAtPath:dstDir])
 	{
 		[fileManager createDirectoryAtPath:dstDir withIntermediateDirectories:YES attributes:nil error:&error];
-		
 	}
 	
 	// ファイルを移動
