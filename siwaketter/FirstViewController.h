@@ -7,12 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MainModel.h"
 
 @interface FirstViewController : UIViewController{
-	NSString *documentDirectory;
-	NSMutableArray *files;
-	int fileNum;
-	
+	MainModel *model;
 }
 
 @end

@@ -22,6 +22,7 @@
 		B0020B5B1941360D00A028BB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0020B3A1941360C00A028BB /* UIKit.framework */; };
 		B0020B631941360D00A028BB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B0020B611941360D00A028BB /* InfoPlist.strings */; };
 		B0020B651941360D00A028BB /* siwaketterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B0020B641941360D00A028BB /* siwaketterTests.m */; };
+		B035356F1942190B00D19ACB /* MainModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B035356E1942190B00D19ACB /* MainModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,8 @@
 		B0020B601941360D00A028BB /* siwaketterTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "siwaketterTests-Info.plist"; sourceTree = "<group>"; };
 		B0020B621941360D00A028BB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B0020B641941360D00A028BB /* siwaketterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = siwaketterTests.m; sourceTree = "<group>"; };
+		B035356D1942190B00D19ACB /* MainModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainModel.h; path = ../MainModel.h; sourceTree = "<group>"; };
+		B035356E1942190B00D19ACB /* MainModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainModel.m; path = ../MainModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +118,8 @@
 		B0020B3C1941360C00A028BB /* siwaketter */ = {
 			isa = PBXGroup;
 			children = (
+				B035356D1942190B00D19ACB /* MainModel.h */,
+				B035356E1942190B00D19ACB /* MainModel.m */,
 				B0020B451941360C00A028BB /* AppDelegate.h */,
 				B0020B461941360C00A028BB /* AppDelegate.m */,
 				B0020B481941360C00A028BB /* Main.storyboard */,
@@ -256,6 +261,7 @@
 			files = (
 				B0020B501941360C00A028BB /* SecondViewController.m in Sources */,
 				B0020B471941360C00A028BB /* AppDelegate.m in Sources */,
+				B035356F1942190B00D19ACB /* MainModel.m in Sources */,
 				B0020B4D1941360C00A028BB /* FirstViewController.m in Sources */,
 				B0020B431941360C00A028BB /* main.m in Sources */,
 			);
@@ -464,6 +470,7 @@
 				B0020B6A1941360D00A028BB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B0020B6B1941360D00A028BB /* Build configuration list for PBXNativeTarget "siwaketterTests" */ = {
 			isa = XCConfigurationList;
@@ -472,6 +479,7 @@
 				B0020B6D1941360D00A028BB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

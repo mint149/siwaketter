@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MainModel.h"
 
-@interface SecondViewController : UIViewController
+@interface SecondViewController : UIViewController{
+	MainModel *model;
+}
 
 @end

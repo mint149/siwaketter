@@ -24,22 +24,25 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 	
+	// プロパティへのアクセスのためにインスタンス生成
+	model = [MainModel new];
+	
 	//Documents内のファイルリストを表示
 	// ドキュメントディレクトリ
 	NSArray *documentDirectries = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-	documentDirectory = [documentDirectries lastObject];
-	NSLog(@"%@",documentDirectory);
+	model.documentDirectory = [documentDirectries lastObject];
+	NSLog(@"%@",model.documentDirectory);
 	
 	// ドキュメントディレクトリにあるファイルリスト
 	NSError *error = nil;
 	NSFileManager *fileManager = [NSFileManager defaultManager];
-	files = (NSMutableArray*)[fileManager contentsOfDirectoryAtPath:documentDirectory error:&error];
-	for (NSString *file in files) {
+	model.files = (NSMutableArray*)[fileManager contentsOfDirectoryAtPath:model.documentDirectory error:&error];
+	for (NSString *file in model.files) {
 		NSLog(@"%@", file);
 	}
 	
 	//DS_Storeを飛ばすために1とする
-	fileNum = 1;
+	model.fileNum = 1;
 
 	[self imageReload];
 	//これがないとUISwipeGestureRecognizerを追加しても反応しなくなる
@@ -80,9 +83,9 @@
 	NSFileManager *fileManager = [NSFileManager defaultManager];
 	
 	// srcをdstに変更する
-	NSString *src = [documentDirectory stringByAppendingPathComponent:files[fileNum]];
-	NSString *dstDir = [documentDirectory stringByAppendingPathComponent:@"sample-dir2"];
-	NSString *dst = [dstDir stringByAppendingPathComponent:files[fileNum]];
+	NSString *src = [model.documentDirectory stringByAppendingPathComponent:model.files[model.fileNum]];
+	NSString *dstDir = [model.documentDirectory stringByAppendingPathComponent:@"sample-dir2"];
+	NSString *dst = [dstDir stringByAppendingPathComponent:model.files[model.fileNum]];
 	
 	NSError *error;
 	
@@ -96,7 +99,7 @@
 	// ファイルを移動
 	BOOL result = [fileManager moveItemAtPath:src toPath:dst error:&error];
 	if (result) {
-		[files removeObjectAtIndex:fileNum];
+		[model.files removeObjectAtIndex:model.fileNum];
 		NSLog(@"ファイルの移動に成功：%@", dst);
 	} else {
 		NSLog(@"ファイルの移動に失敗：%@", error.description);
@@ -106,7 +109,7 @@
 //files[fileNum]の画像を表示する
 - (void)imageReload{
 	//キャッシュなしで画像を作成
-	NSString *imagePath = [documentDirectory stringByAppendingPathComponent:files[fileNum]];
+	NSString *imagePath = [model.documentDirectory stringByAppendingPathComponent:model.files[model.fileNum]];
 	UIImage *tempImage = [UIImage imageWithContentsOfFile:imagePath];
 	
 	self.imageView.image = tempImage;
