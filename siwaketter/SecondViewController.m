@@ -21,7 +21,7 @@
 	// Do any additional setup after loading the view, typically from a nib.
 
 	// プロパティへのアクセスのためにインスタンス生成
-	model = [MainModel new];
+	model = [[MainModel alloc]init];
 
 }
 
@@ -33,29 +33,31 @@
 
 - (IBAction)documentsFilesRestore:(id)sender {
 	// ファイルマネージャを作成
-//	NSFileManager *fileManager = [NSFileManager defaultManager];
-//	
-//	// srcをdstに変更する
-//	NSString *src = [documentDirectory stringByAppendingPathComponent:files[fileNum]];
-//	NSString *dstDir = [documentDirectory stringByAppendingPathComponent:@"sample-dir2"];
-//	NSString *dst = [dstDir stringByAppendingPathComponent:files[fileNum]];
-//	
-//	NSError *error;
-//	
-//	// 文字列型の変数 path で指定したファイルまたはディレクトリが存在するかを調べます。
-//	if (![fileManager fileExistsAtPath:dstDir])
-//	{
-//		[fileManager createDirectoryAtPath:dstDir withIntermediateDirectories:YES attributes:nil error:&error];
-//		
-//	}
-//	
-//	// ファイルを移動
-//	BOOL result = [fileManager copyItemAtPath:src toPath:dst error:&error];
-//	if (result) {
-//		[files removeObjectAtIndex:fileNum];
-//		NSLog(@"バックアップ復元：%@", dst);
-//	} else {
-//		NSLog(@"バックアップの復元に失敗：%@", error.description);
-//	}
+	NSFileManager *fileManager = [NSFileManager defaultManager];
+	
+	//_backup_内のファイルリストを取得
+	NSString *backupDirectory = [model.documentDirectory stringByAppendingPathComponent:@"_backup_"];
+	NSLog(@"document:%@",model.documentDirectory);
+	NSLog(@"backup:%@",backupDirectory);
+	
+	NSError *error = nil;
+	NSMutableArray *files = (NSMutableArray*)[fileManager contentsOfDirectoryAtPath:backupDirectory error:&error];
+	for (NSString *file in files) {
+		NSLog(@"%@", file);
+	}
+		
+	for (NSString *file in files) {
+		NSString *src = [backupDirectory stringByAppendingPathComponent:file];
+		NSString *dst = [model.documentDirectory stringByAppendingPathComponent:file];
+		error = nil;
+		
+		// ファイルを移動
+		BOOL result = [fileManager copyItemAtPath:src toPath:dst error:&error];
+		if (result) {
+			NSLog(@"バックアップ復元：%@", dst);
+		} else {
+			NSLog(@"バックアップの復元に失敗：%@", error.description);
+		};
+	}
 }
 @end

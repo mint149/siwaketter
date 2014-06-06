@@ -25,24 +25,8 @@
 	// Do any additional setup after loading the view, typically from a nib.
 	
 	// プロパティへのアクセスのためにインスタンス生成
-	model = [MainModel new];
+	model = [[MainModel alloc]init];
 	
-	//Documents内のファイルリストを表示
-	// ドキュメントディレクトリ
-	NSArray *documentDirectries = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-	model.documentDirectory = [documentDirectries lastObject];
-	NSLog(@"%@",model.documentDirectory);
-	
-	// ドキュメントディレクトリにあるファイルリスト
-	NSError *error = nil;
-	NSFileManager *fileManager = [NSFileManager defaultManager];
-	model.files = (NSMutableArray*)[fileManager contentsOfDirectoryAtPath:model.documentDirectory error:&error];
-	for (NSString *file in model.files) {
-		NSLog(@"%@", file);
-	}
-	
-	//DS_Storeを飛ばすために1とする
-	model.fileNum = 1;
 
 	[self imageReload];
 	//これがないとUISwipeGestureRecognizerを追加しても反応しなくなる

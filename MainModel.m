@@ -14,4 +14,26 @@
 @synthesize files;
 @synthesize fileNum;
 
+-(id)init{
+	if(self = [super init]){
+		//Documents内のファイルリストを表示
+		// ドキュメントディレクトリ
+		NSArray *documentDirectries = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+		documentDirectory = [documentDirectries lastObject];
+		NSLog(@"%@",documentDirectory);
+		
+		// ドキュメントディレクトリにあるファイルリスト
+		NSError *error = nil;
+		NSFileManager *fileManager = [NSFileManager defaultManager];
+		files = (NSMutableArray*)[fileManager contentsOfDirectoryAtPath:documentDirectory error:&error];
+		for (NSString *file in files) {
+			NSLog(@"%@", file);
+		}
+		
+		//DS_Storeを飛ばすために1とする
+		fileNum = 1;
+	}
+	return self;
+}
+
 @end
